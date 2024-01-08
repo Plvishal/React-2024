@@ -1,8 +1,11 @@
 // import React from 'react';
 import { useFormik } from 'formik';
 import { validateProduct } from './Validation.js';
+import { useState } from 'react';
 
 function FormikForm() {
+  const [formData, setFormData] = useState([]);
+
   const formik = useFormik({
     initialValues: {
       id: '',
@@ -12,7 +15,8 @@ function FormikForm() {
     },
     validate: validateProduct,
     onSubmit: (values) => {
-      console.log(values);
+      console.log(JSON.stringify(values));
+      setFormData(JSON.stringify(values));
     },
   });
   return (
@@ -101,6 +105,11 @@ function FormikForm() {
           </tbody>
         </tabel>
       </form>
+      <div>
+        <ul>
+          {formData}
+        </ul>
+      </div>
     </>
   );
 }
