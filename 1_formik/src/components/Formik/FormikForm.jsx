@@ -18,7 +18,7 @@ function FormikForm() {
   return (
     <>
       <form onSubmit={formik.handleSubmit}>
-        <tabel >
+        <tabel>
           <tbody>
             <tr>
               <td>Id</td>
@@ -31,6 +31,11 @@ function FormikForm() {
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
+              </td>
+              <td>
+                {formik.touched.id && formik.errors.id ? (
+                  <span style={{ color: 'red' }}>{formik.errors.id}</span>
+                ) : null}
               </td>
             </tr>
             <tr>
@@ -45,6 +50,9 @@ function FormikForm() {
                   onBlur={formik.handleBlur}
                 />
               </td>
+              {formik.touched.name && formik.errors.name ? (
+                <span>{formik.errors.name}</span>
+              ) : null}
             </tr>
             <tr>
               <td>Qty</td>
@@ -58,6 +66,11 @@ function FormikForm() {
                   onBlur={formik.handleBlur}
                 />
               </td>
+              <tb>
+                {formik.touched.qty && formik.errors.qty ? (
+                  <span>{formik.errors.qty}</span>
+                ) : null}
+              </tb>
             </tr>
             <tr>
               <td>Price</td>
@@ -70,6 +83,11 @@ function FormikForm() {
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
+              </td>
+              <td>
+                {formik.touched.price && formik.errors.price ? (
+                  <span>{formik.errors.price}</span>
+                ) : null}
               </td>
             </tr>
             <tr>
